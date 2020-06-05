@@ -27,7 +27,7 @@ export default class PostForm extends React.Component {
         e.preventDefault()
 
         if (!this.state.title) {
-            this.setState(() => ({ error: 'Please provide title too your post.' }))
+            this.setState(() => ({ error: 'Please provide title your post.' }))
         } else {
             this.setState(() => ({ error: '' }))
             this.props.onSubmit({

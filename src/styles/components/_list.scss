@@ -61,3 +61,10 @@
         padding-left: $s-size;
     }
 }
+
+.remove-button {
+    margin-bottom: $m-size;
+    @media (min-width: $desktop-breakpoint) {
+        margin-bottom: $l-size;
+    }  
+}

@@ -76,7 +76,7 @@ export class EditPostPage extends React.Component {
                         post={this.props.post} //sending post as a props to PostForm
                         onSubmit={this.onSubmit}
                     />
-                    <div>
+                    <div className="remove-button">
                         <button className="button button--secondary" onClick={this.showAlert}>Remove Post</button>
                         {this.state.alert}
                     </div>
