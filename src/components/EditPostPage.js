@@ -52,12 +52,7 @@ export class EditPostPage extends React.Component {
         this.props.history.push('/')
     }
 
-    paragraphstate = (test) => {
-        if (test !== '') {
-            console.log(test);
 
-        }
-    }
 
     SeeBlogButtonClick = () => {
 
@@ -85,7 +80,6 @@ export class EditPostPage extends React.Component {
                     <PostForm
                         post={this.props.post} //sending post as a props to PostForm
                         onSubmit={this.onSubmit}
-                        paragraphstate={this.paragraphstate}
                     />
                     <div className="remove-button">
                         <button className="button button--secondary" onClick={this.showAlert}>Remove Post</button>

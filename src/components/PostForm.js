@@ -45,7 +45,6 @@ export const PostForm = (props) => {
             })
         }
     }
-    props.paragraphstate(para)
 
     return (
         <div>
