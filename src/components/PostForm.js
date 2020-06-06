@@ -17,6 +17,9 @@ export const PostForm = (props) => {
         if (props.post.title === title) {
             setPara('')
         }
+        if (title !== '') {
+            setError('')
+        }
     }
 
 

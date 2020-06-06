@@ -11,7 +11,8 @@ export const SinglePostPage = (props) => {
     const [value, setValue] = useState(window.location.href)
 
     const onClick = ({ target: { innerHTML } }) => {
-        console.log(`Clicked on "${innerHTML}"!`); // eslint-disable-line
+        console.log(`Clicked on "${innerHTML}"!`);
+        document.getElementById("myTooltip").innerHTML = "Copied"
     };
 
     const onCopy = () => {
@@ -41,7 +42,12 @@ export const SinglePostPage = (props) => {
                             onCopy={onCopy}
                             options={{ message: 'Whoa!' }}
                             text={value}>
-                            <button className="button button-copy-link" onClick={onClick}>Copy The Link</button>
+                            <div className="tooltip">
+                                <button className="button button-copy-link" onClick={onClick}>
+                                    <span className="tooltiptext" id="myTooltip">Copy the link</span>
+                                    Copy Link
+                                </button>
+                            </div>
                         </CopyToClipboard>
 
 
