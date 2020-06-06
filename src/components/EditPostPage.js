@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import PostForm from './PostForm'
 import { startremovePost, starteditPost } from '../actions/posts';
 import SweetAlert from 'react-bootstrap-sweetalert';
-import { Link } from 'react-router-dom'
 
 export class EditPostPage extends React.Component {
 
@@ -14,7 +13,6 @@ export class EditPostPage extends React.Component {
             alert: null
         };
     }
-
 
     showAlert = () => {
         this.setState(() => ({
@@ -44,8 +42,6 @@ export class EditPostPage extends React.Component {
         this.setState(() => ({ alert: null }))
     }
 
-
-
     onSubmit = (postFromPostForm) => {
         this.props.starteditPost(this.props.post.id, postFromPostForm)
         this.props.history.push('/')
@@ -56,25 +52,40 @@ export class EditPostPage extends React.Component {
         this.props.history.push('/')
     }
 
+    paragraphstate = (test) => {
+        if (test !== '') {
+            console.log(test);
+
+        }
+    }
+
+    SeeBlogButtonClick = () => {
+
+        const url = `${`/post/${this.props.userId}/${this.props.post.id}`}`;
+        window.open(url, '_blank');
+        //  this.props.history.push(`${`/post/${this.props.userId}/${this.props.post.id}`}`)
+
+    }
 
 
     render() {
         return (
             <div>
                 <div className="page-header">
-                    <div className="content-container">
+                    <div className="content-container wrapper">
                         <h1 className="page-header__title">Edit Post</h1>
-                        <Link to={`/post/${this.props.userId}/${this.props.post.id}`}>
-                            <div>
-                                <h1>Link</h1>
-                            </div>
-                        </Link>
+
+                        <div>
+                            <button className="button" onClick={this.SeeBlogButtonClick}>See Your Blog</button>
+                        </div>
+
                     </div>
                 </div>
                 <div className="content-container">
                     <PostForm
                         post={this.props.post} //sending post as a props to PostForm
                         onSubmit={this.onSubmit}
+                        paragraphstate={this.paragraphstate}
                     />
                     <div className="remove-button">
                         <button className="button button--secondary" onClick={this.showAlert}>Remove Post</button>

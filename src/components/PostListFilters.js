@@ -21,7 +21,7 @@ export class PostListFilters extends React.Component {
         return (
             <div className="page-header">
                 <div className='content-container'>
-                    <div className="filters-wrapper">
+                    <div className="wrapper">
                         <div className="filters">
                             <div className="input-group">
                                 <div className="input-group__item input-group__item-first">

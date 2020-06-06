@@ -16,7 +16,7 @@ margin-bottom: $l-size;
     margin-top: $m-size;
 }
 
-.filters-wrapper{
+.wrapper{
     flex-direction: row;
     @media (min-width: $desktop-breakpoint) {
         display: flex;

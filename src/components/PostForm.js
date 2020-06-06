@@ -5,18 +5,29 @@ import moment from 'moment'
 export const PostForm = (props) => {
     const [title, setTitle] = useState(props.post ? props.post.title : '')
     const [body, setBody] = useState(props.post ? props.post.body : '')
-    const [createdAt, setCreatedAt] = useState(props.post ? moment(props.post.createdAt) : moment())
+    const [createdAt] = useState(props.post ? props.post.createdAt : moment())
     const [error, setError] = useState('')
-    const [editPage, setEditPage] = useState(encodeURI(window.location.href).includes('edit'))
+    const [editPage] = useState(encodeURI(window.location.href).includes('edit'))
+    const [para, setPara] = useState('')
 
     const onTitleChange = (e) => {
         const title = e.target.value
         setTitle(title)
-
+        setPara('Some changes has occured make sure u save it.')
+        if (props.post.title === title) {
+            setPara('')
+        }
     }
+
+
+
     const onBodyChange = (e) => {
         const body = e.target.value
         setBody(body)
+        setPara('Some changes has occured make sure u save it.')
+        if (props.post.body === body) {
+            setPara('')
+        }
     }
 
     const onSubmit = (e) => {
@@ -24,17 +35,17 @@ export const PostForm = (props) => {
 
         if (!title) {
             setError('Please provide title your post.')
-
+            setPara('')
         } else {
             setError('')
             props.onSubmit({
                 title,
                 body,
-                createdAt: createdAt.valueOf(),
+                createdAt: createdAt.valueOf(), //valueOf() returns timeStamp 
             })
         }
     }
-
+    props.paragraphstate(para)
 
     return (
         <div>
@@ -42,7 +53,9 @@ export const PostForm = (props) => {
                 {
                     error && <p className="form-error">{error}</p> //checks if (this.state.error) is true or false . empty string is false so acts as this line doesnot exist. if string exists it is true and following jsx runs
                 }
-
+                {
+                    para && <p className="form-error">{para}</p>
+                }
                 {
                     editPage && <label className="edit-label">Title</label>
                 }  <input className="text-input"
@@ -61,6 +74,7 @@ export const PostForm = (props) => {
                     onChange={onBodyChange}
                 >
                 </textarea>
+
                 <div>
                     <button className="button">Save Post</button>
                 </div>
