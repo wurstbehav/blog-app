@@ -8,18 +8,16 @@ export const PostForm = (props) => {
     const [createdAt] = useState(props.post ? props.post.createdAt : moment())
     const [error, setError] = useState('')
     const [editPage] = useState(encodeURI(window.location.href).includes('edit'))
-    const [para, setPara] = useState('')
+
 
     const onTitleChange = (e) => {
         const title = e.target.value
         setTitle(title)
-        setPara('Some changes has occured make sure u save it.')
+        setError('Some changes has occured make sure u save it.')
         if (props.post.title === title) {
-            setPara('')
-        }
-        if (title !== '') {
             setError('')
         }
+
     }
 
 
@@ -27,9 +25,9 @@ export const PostForm = (props) => {
     const onBodyChange = (e) => {
         const body = e.target.value
         setBody(body)
-        setPara('Some changes has occured make sure u save it.')
+        setError('Some changes has occured make sure u save it.')
         if (props.post.body === body) {
-            setPara('')
+            setError('')
         }
     }
 
@@ -38,7 +36,6 @@ export const PostForm = (props) => {
 
         if (!title) {
             setError('Please provide title your post.')
-            setPara('')
         } else {
             setError('')
             props.onSubmit({
@@ -54,9 +51,6 @@ export const PostForm = (props) => {
             <form className="form" onSubmit={onSubmit}>
                 {
                     error && <p className="form-error">{error}</p> //checks if (this.state.error) is true or false . empty string is false so acts as this line doesnot exist. if string exists it is true and following jsx runs
-                }
-                {
-                    para && <p className="form-error">{para}</p>
                 }
                 {
                     editPage && <label className="edit-label">Title</label>
