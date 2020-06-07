@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
 import getVisiblePosts from '../selectors/posts'
 import PostListItem from './PostListItem'
 
@@ -18,7 +19,7 @@ export const PostList = (props) => {
                         </div>
                     ) : (
                             props.posts.map((post, index) => {
-                                return <PostListItem key={post.id}
+                                return <PostListItem key={uuidv4()}
                                     id={post.id}
                                     title={post.title}
                                     createdAt={post.createdAt} />
