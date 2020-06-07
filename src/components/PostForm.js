@@ -14,8 +14,13 @@ export const PostForm = (props) => {
         const title = e.target.value
         setTitle(title)
         setError('Some changes has occured make sure u save it.')
-        if (props.post.title === title) {
-            setError('')
+        try {
+            if (title === props.post.title) {
+                setError('')
+            }
+
+        } catch (e) {
+
         }
 
     }
@@ -26,15 +31,21 @@ export const PostForm = (props) => {
         const body = e.target.value
         setBody(body)
         setError('Some changes has occured make sure u save it.')
-        if (props.post.body === body) {
-            setError('')
+        try {
+            if (body === props.post.body) {
+                setError('')
+            }
+
+        } catch (e) {
+
         }
+
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if (!title) {
+        if (title === '') {
             setError('Please provide title your post.')
         } else {
             setError('')
